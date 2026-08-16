@@ -23,6 +23,23 @@ public class Main {
         System.out.println("Cliente creado correctamente");
     }
     
+    void listCustomers(){
+        if(customers.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return;
+        }
+        int counter = 1;
+        for (Customer c : customers) {
+            System.out.println("Cliente #"+counter);
+            System.out.println("Id del cliente: "+c.getId());
+            System.out.println("Nombre del cliente: "+c.getName());
+            System.out.println("Telefono del cliente: "+c.getPhone());
+            System.out.println("Email del cliente: "+c.getEmail());
+            System.out.println(" ");
+            counter++;
+        }
+    }
+    
     public static void main(String[] args) {
         
     }
