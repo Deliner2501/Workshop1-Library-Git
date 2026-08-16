@@ -61,6 +61,30 @@ public class Main {
         System.out.println("Cliente no registrado");
     }
     
+    void updateCustomer(){
+        if(customers.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return;
+        }
+        String id;
+        System.out.print("Digite el id del cliente a actualizar: ");
+        id = read.nextLine();
+        
+        for (Customer c : customers) {
+            if(c.getId().equals(id)){
+                System.out.print("Digite el nuevo nombre del cliente: ");
+                c.setName(read.nextLine());
+                System.out.print("Digite el nuevo telefono del cliente: ");
+                c.setPhone(read.nextLine());
+                System.out.print("Digite el nuevo email del cliente: ");
+                c.setEmail(read.nextLine());
+                System.out.println("Cliente actualizado correctamente");
+                return;
+            }
+        }
+        System.out.println("Cliente no registrado");
+    }
+    
     public static void main(String[] args) {
         
     }
