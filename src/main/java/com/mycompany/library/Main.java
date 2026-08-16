@@ -40,6 +40,27 @@ public class Main {
         }
     }
     
+    void searchCustomer(){
+        if(customers.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return;
+        }
+        String id;
+        System.out.print("Digite el id del cliente a buscar: ");
+        id = read.nextLine();
+       
+        for (Customer c : customers) {
+            if(c.getId().equals(id)){
+                System.out.println("Id del cliente: "+c.getId());
+                System.out.println("Nombre del cliente: "+c.getName());
+                System.out.println("Telefono del cliente: "+c.getPhone());
+                System.out.println("Email del cliente: "+c.getEmail());
+                return;
+            }
+        }
+        System.out.println("Cliente no registrado");
+    }
+    
     public static void main(String[] args) {
         
     }
