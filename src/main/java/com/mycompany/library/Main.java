@@ -142,6 +142,31 @@ public class Main {
         }
     }
     
+    void searchBook(){
+        if(books.isEmpty()){
+            System.out.println("No hay libros registrados");
+            return;
+        }
+        String code;
+        System.out.print("Digite el codigo del libro a buscar: ");
+        code = read.nextLine();
+       
+        for (Book b : books) {
+            if(b.getCode().equals(code)){
+                System.out.println("Codigo del libro: "+b.getCode());
+                System.out.println("Titulo del libro: "+b.getTitle());
+                System.out.println("Anio de publicacion del libro: "+b.getYearPublic());
+                System.out.println("Autor del libro: "+b.getAuthor());
+                if(b.isAvailable()){
+                System.out.println("Disponible: Si");
+                }else{
+                System.out.println("Disponible: No");
+                }
+                return;
+            }
+        }
+        System.out.println("Libro no registrado");
+    }
     public static void main(String[] args) {
         
     }
