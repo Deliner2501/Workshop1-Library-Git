@@ -167,6 +167,30 @@ public class Main {
         }
         System.out.println("Libro no registrado");
     }
+    
+    void updateBook(){
+        if(books.isEmpty()){
+            System.out.println("No hay libros registrados");
+            return;
+        }
+        String code;
+        System.out.print("Digite el codigo del libro a actualizar: ");
+        code = read.nextLine();
+        
+        for (Book b : books) {
+            if(b.getCode().equals(code)){
+                System.out.print("Digite el nuevo titulo del libro: ");
+                b.setTitle(read.nextLine());
+                System.out.print("Digite la nueva fecha de publicacion del libro: ");
+                b.setYearPublic(read.nextLine());
+                System.out.print("Digite el nuevo autor del libro: ");
+                b.setAuthor(read.nextLine());
+                System.out.println("Libro actualizado correctamente");
+                return;
+            }
+        }
+        System.out.println("Libro no registrado");
+    }
     public static void main(String[] args) {
         
     }
