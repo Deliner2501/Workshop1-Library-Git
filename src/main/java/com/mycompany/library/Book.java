@@ -1,0 +1,40 @@
+
+package com.mycompany.library;
+
+
+public class Book extends Material{
+    private String author;
+    private boolean available;
+
+    public Book() {
+    }
+
+    public Book(String code, String title, String yearPublic, String author, boolean available) {
+        super(code, title, yearPublic);
+        this.author = author;
+        this.available = available;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    
+
+    
+   
+    
+    
+}
