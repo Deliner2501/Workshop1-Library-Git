@@ -274,7 +274,7 @@ public class Main {
                 if(l.getState().equals("Activo")){
                     l.getBook().setAvailable(true);
                     l.setState("Devuelto");
-                    System.out.println("Prestamo devuelto correctamente");
+                    System.out.println("El prestamo ha sido devuelto correctamente");
                     return;
                 }else{
                     System.out.println("El prestamo ya ha sido devuelto");
