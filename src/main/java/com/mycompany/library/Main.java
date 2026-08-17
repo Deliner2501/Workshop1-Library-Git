@@ -285,6 +285,26 @@ public class Main {
         System.out.println("Prestamo no registrado");
     }
     
+    void listLoans(){
+    if(loans.isEmpty()){
+        System.out.println("No hay prestamos registrados");
+        return;
+    }
+
+    int counter = 1;
+
+    for (Loan l : loans) {
+        System.out.println("Prestamo #" + counter);
+        System.out.println("Id del prestamo: " + l.getLoanId());
+        System.out.println("Nombre del cliente: " + l.getCustomer().getName());
+        System.out.println("Titulo del libro: " + l.getBook().getTitle());
+        System.out.println("Fecha del prestamo: " + l.getDate());
+        System.out.println("Estado: " + l.getState());
+        System.out.println(" ");
+        counter++;
+    }
+}
+    
     public static void main(String[] args) {
         
     }
