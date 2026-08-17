@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     static ArrayList<Customer> customers = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner read = new Scanner(System.in);
     
     void createCustomer(){
@@ -102,6 +103,112 @@ public class Main {
             }
         }
         System.out.println("Cliente no registrado");
+    }
+    
+    void createBook(){
+        String code, title, yearPublic, author;
+        boolean available;
+        System.out.print("Digite el codigo del libro: ");
+        code = read.nextLine();
+        System.out.print("Digite el titulo del libro: ");
+        title = read.nextLine();
+        System.out.print("Digite el anio de publicacion del libro: ");
+        yearPublic = read.nextLine();
+        System.out.print("Digite el autor del libro: ");
+        author = read.nextLine();
+        books.add(new Book(code, title, yearPublic, author, true));
+        System.out.println("Libro creado correctamente");
+    }
+    
+    void listBooks(){
+        if(books.isEmpty()){
+            System.out.println("No hay libros registrados");
+            return;
+        }
+        int counter = 1;
+        for (Book b : books) {
+            System.out.println("Libro #"+counter);
+            System.out.println("Codigo del libro: "+b.getCode());
+            System.out.println("Titulo del libro: "+b.getTitle());
+            System.out.println("Anio de publicacion del libro: "+b.getYearPublic());
+            System.out.println("Autor del libro: "+b.getAuthor());
+            if(b.isAvailable()){
+                System.out.println("Disponible: Si");
+            }else{
+                System.out.println("Disponible: No");
+            }
+            System.out.println(" ");
+            counter++;
+        }
+    }
+    
+    void searchBook(){
+        if(books.isEmpty()){
+            System.out.println("No hay libros registrados");
+            return;
+        }
+        String code;
+        System.out.print("Digite el codigo del libro a buscar: ");
+        code = read.nextLine();
+       
+        for (Book b : books) {
+            if(b.getCode().equals(code)){
+                System.out.println("Codigo del libro: "+b.getCode());
+                System.out.println("Titulo del libro: "+b.getTitle());
+                System.out.println("Anio de publicacion del libro: "+b.getYearPublic());
+                System.out.println("Autor del libro: "+b.getAuthor());
+                if(b.isAvailable()){
+                System.out.println("Disponible: Si");
+                }else{
+                System.out.println("Disponible: No");
+                }
+                return;
+            }
+        }
+        System.out.println("Libro no registrado");
+    }
+    
+    void updateBook(){
+        if(books.isEmpty()){
+            System.out.println("No hay libros registrados");
+            return;
+        }
+        String code;
+        System.out.print("Digite el codigo del libro a actualizar: ");
+        code = read.nextLine();
+        
+        for (Book b : books) {
+            if(b.getCode().equals(code)){
+                System.out.print("Digite el nuevo titulo del libro: ");
+                b.setTitle(read.nextLine());
+                System.out.print("Digite la nueva fecha de publicacion del libro: ");
+                b.setYearPublic(read.nextLine());
+                System.out.print("Digite el nuevo autor del libro: ");
+                b.setAuthor(read.nextLine());
+                System.out.println("Libro actualizado correctamente");
+                return;
+            }
+        }
+        System.out.println("Libro no registrado");
+    }
+    
+    void deleteBook(){
+        if(books.isEmpty()){
+            System.out.println("No hay libros registrados");
+            return;
+        }
+        String code;
+        System.out.print("Digite el codigo del libro a eliminar: ");
+        code = read.nextLine();
+        
+        for (Book b : books) {
+            if(b.getCode().equals(code)){
+                books.remove(b);
+                System.out.println("Libro eliminado correctamente");
+                return;
+            }
+        }
+        System.out.println("Libro no registrado");
     }
     
     public static void main(String[] args) {
