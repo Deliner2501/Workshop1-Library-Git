@@ -4,6 +4,7 @@ package com.mycompany.library;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Main {
     static ArrayList<Customer> customers = new ArrayList<>();
@@ -23,11 +24,13 @@ public class Main {
         email = read.nextLine();
         customers.add(new Customer(id, name, phone, email));
         System.out.println("Cliente creado correctamente");
+        System.out.println(" ");
     }
     
     void listCustomers(){
         if(customers.isEmpty()){
             System.out.println("No hay clientes registrados");
+            System.out.println(" ");
             return;
         }
         int counter = 1;
@@ -57,15 +60,18 @@ public class Main {
                 System.out.println("Nombre del cliente: "+c.getName());
                 System.out.println("Telefono del cliente: "+c.getPhone());
                 System.out.println("Email del cliente: "+c.getEmail());
+                System.out.println(" ");
                 return;
             }
         }
         System.out.println("Cliente no registrado");
+        System.out.println(" ");
     }
     
     void updateCustomer(){
         if(customers.isEmpty()){
             System.out.println("No hay clientes registrados");
+            System.out.println(" ");
             return;
         }
         String id;
@@ -81,15 +87,18 @@ public class Main {
                 System.out.print("Digite el nuevo email del cliente: ");
                 c.setEmail(read.nextLine());
                 System.out.println("Cliente actualizado correctamente");
+                System.out.println(" ");
                 return;
             }
         }
         System.out.println("Cliente no registrado");
+        System.out.println(" ");
     }
     
     void deleteCustomer(){
         if(customers.isEmpty()){
             System.out.println("No hay clientes registrados");
+            System.out.println(" ");
             return;
         }
         String id;
@@ -100,15 +109,16 @@ public class Main {
             if(c.getId().equals(id)){
                 customers.remove(c);
                 System.out.println("Cliente eliminado correctamente");
+                System.out.println(" ");
                 return;
             }
         }
         System.out.println("Cliente no registrado");
+        System.out.println(" ");
     }
     
     void createBook(){
         String code, title, yearPublic, author;
-        boolean available;
         System.out.print("Digite el codigo del libro: ");
         code = read.nextLine();
         System.out.print("Digite el titulo del libro: ");
@@ -119,11 +129,13 @@ public class Main {
         author = read.nextLine();
         books.add(new Book(code, title, yearPublic, author, true));
         System.out.println("Libro creado correctamente");
+        System.out.println(" ");
     }
     
     void listBooks(){
         if(books.isEmpty()){
             System.out.println("No hay libros registrados");
+            System.out.println(" ");
             return;
         }
         int counter = 1;
@@ -146,6 +158,7 @@ public class Main {
     void searchBook(){
         if(books.isEmpty()){
             System.out.println("No hay libros registrados");
+            System.out.println(" ");
             return;
         }
         String code;
@@ -163,15 +176,18 @@ public class Main {
                 }else{
                 System.out.println("Disponible: No");
                 }
+                System.out.println(" ");
                 return;
             }
         }
         System.out.println("Libro no registrado");
+        System.out.println(" ");
     }
     
     void updateBook(){
         if(books.isEmpty()){
             System.out.println("No hay libros registrados");
+            System.out.println(" ");
             return;
         }
         String code;
@@ -187,15 +203,18 @@ public class Main {
                 System.out.print("Digite el nuevo autor del libro: ");
                 b.setAuthor(read.nextLine());
                 System.out.println("Libro actualizado correctamente");
+                System.out.println(" ");
                 return;
             }
         }
         System.out.println("Libro no registrado");
+        System.out.println(" ");
     }
     
     void deleteBook(){
         if(books.isEmpty()){
             System.out.println("No hay libros registrados");
+            System.out.println(" ");
             return;
         }
         String code;
@@ -206,20 +225,24 @@ public class Main {
             if(b.getCode().equals(code)){
                 books.remove(b);
                 System.out.println("Libro eliminado correctamente");
+                System.out.println(" ");
                 return;
             }
         }
         System.out.println("Libro no registrado");
+        System.out.println(" ");
     }
     
     void createLoan(){
         if(customers.isEmpty()){
             System.out.println("No hay clientes registrados");
+            System.out.println(" ");
             return;
         }
         
         if(books.isEmpty()){
             System.out.println("No hay libros registrados");
+            System.out.println(" ");
             return;
         }
         
@@ -237,6 +260,7 @@ public class Main {
         }
         if(customer == null){
             System.out.println("Cliente no registrado");
+            System.out.println(" ");
             return;
         }
         System.out.print("Digite el codigo del libro a prestar: ");
@@ -250,20 +274,24 @@ public class Main {
         }
         if(book == null){
             System.out.println("Libro no registrado");
+            System.out.println(" ");
             return;
         }
         if(!book.isAvailable()){
             System.out.println("El libro no se encuentra disponible");
+            System.out.println(" ");
             return;
         }
         loans.add(new Loan(loanId, customer, book));
         book.setAvailable(false);
         System.out.println("Prestamo registrado correctamente");
+        System.out.println(" ");
     }
     
     void returnLoan(){
         if(loans.isEmpty()){
             System.out.println("No hay ningun prestamo registrado");
+            System.out.println(" ");
             return;
         }
         String loanId;
@@ -275,19 +303,23 @@ public class Main {
                     l.getBook().setAvailable(true);
                     l.setState("Devuelto");
                     System.out.println("El prestamo ha sido devuelto correctamente");
+                    System.out.println(" ");
                     return;
                 }else{
                     System.out.println("El prestamo ya ha sido devuelto");
+                    System.out.println(" ");
                     return;
                 }
             }
         }
         System.out.println("Prestamo no registrado");
+        System.out.println(" ");
     }
     
     void listLoans(){
     if(loans.isEmpty()){
         System.out.println("No hay prestamos registrados");
+        System.out.println(" ");
         return;
     }
 
@@ -306,6 +338,99 @@ public class Main {
 }
     
     public static void main(String[] args) {
-        
+        Main m = new Main();
+        int option;
+        do{
+            option = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                 ===== SISTEMA DE GESTION DE BIBLIOTECA =====
+                                                 1. Gestionar clientes
+                                                 2. Gestionar libros
+                                                 3. Gestionar prestamos
+                                                 4. Salir
+                                                 
+                                                 Digite una opcion: """));
+            switch(option){
+                case 1 -> {
+                    int customerOption;
+                    do{
+                        customerOption = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                                                                              ===== GESTION DE CLIENTES =====
+                                                                                                              1. Crear cliente
+                                                                                                              2. Listar clientes
+                                                                                                              3. Buscar cliente
+                                                                                                              4. Actualizar cliente
+                                                                                                              5. Eliminar cliente
+                                                                                                              6. Volver al menu principal
+                                                                                      
+                                                                                                              Digite una opcion: """));
+                        switch(customerOption){
+                            case 1 -> m.createCustomer();
+                            case 2 -> m.listCustomers();
+                            case 3 -> m.searchCustomer();
+                            case 4 -> m.updateCustomer();
+                            case 5 -> m.deleteCustomer();
+                            case 6 -> {
+                            }
+                            default -> JOptionPane.showMessageDialog(null, "ERROR: Opcion no valida", "ERROR", JOptionPane.ERROR_MESSAGE);
+                            
+                        }
+                    }while(customerOption != 6);
+                }
+                    
+                case 2 -> {
+                    int bookOption;
+                    do{
+                        bookOption = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                                                                          ===== GESTION DE LIBROS =====
+                                                                                                          1. Crear libro
+                                                                                                          2. Listar libros
+                                                                                                          3. Buscar libro
+                                                                                                          4. Actualizar libro
+                                                                                                          5. Eliminar libro
+                                                                                                          6. Volver al menu principal
+                                                                                  
+                                                                                                          Digite una opcion: """));
+                        switch(bookOption){
+                            case 1 -> m.createBook();
+                            case 2 -> m.listBooks();
+                            case 3 -> m.searchBook();
+                            case 4 -> m.updateBook();
+                            case 5 -> m.deleteBook();
+                            case 6 -> {
+                            }
+                            default -> JOptionPane.showMessageDialog(null, "ERROR: Opcion no valida", "ERROR", JOptionPane.ERROR_MESSAGE);
+                            
+                        }
+                    }while(bookOption != 6);
+                }
+                    
+                case 3 -> {
+                    int loanOption;
+                    do{
+                        loanOption = Integer.parseInt(JOptionPane.showInputDialog("""
+                                                                                                          ===== GESTION DE PRESTAMOS =====
+                                                                                                          1. Registrar prestamo
+                                                                                                          2. Registrar devolucion
+                                                                                                          3. Listar prestamos
+                                                                                                          4. Volver al menu principal
+                                                                                  
+                                                                                                          Digite una opcion: """));
+                        switch(loanOption){
+                            case 1 -> m.createLoan();
+                            case 2 -> m.returnLoan();
+                            case 3 -> m.listLoans();
+                            case 4 -> {
+                            }
+                            default -> JOptionPane.showMessageDialog(null, "ERROR: Opcion no valida", "ERROR", JOptionPane.ERROR_MESSAGE);
+                            
+                        }
+                    }while(loanOption != 4);
+                }
+                case 4 -> JOptionPane.showMessageDialog(null, """
+                                                        GRACIAS POR USAR NUESTROS SERVICIOS
+                                                        SALIENDO...""");
+                default -> JOptionPane.showMessageDialog(null, "ERROR: Opcion no valida", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }while(option != 4);
     }
 }
