@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     static ArrayList<Customer> customers = new ArrayList<>();
+    static ArrayList<Book> books = new ArrayList<>();
     static Scanner read = new Scanner(System.in);
     
     void createCustomer(){
