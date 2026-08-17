@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Main {
     static ArrayList<Customer> customers = new ArrayList<>();
     static ArrayList<Book> books = new ArrayList<>();
+    static ArrayList<Loan> loans = new ArrayList<>();
     static Scanner read = new Scanner(System.in);
     
     void createCustomer(){
@@ -209,6 +210,55 @@ public class Main {
             }
         }
         System.out.println("Libro no registrado");
+    }
+    
+    void createLoan(){
+        if(customers.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return;
+        }
+        
+        if(books.isEmpty()){
+            System.out.println("No hay libros registrados");
+            return;
+        }
+        
+        String loanId, customerId, bookCode;
+        System.out.print("Digite el id del prestamo: ");
+        loanId = read.nextLine();
+        System.out.print("Digite el id del cliente al que se va a prestar: ");
+        customerId = read.nextLine();
+        Customer customer = null;
+        for (Customer c : customers) {
+            if(c.getId().equals(customerId)){
+                customer = c;
+                break;
+            }
+        }
+        if(customer == null){
+            System.out.println("Cliente no registrado");
+            return;
+        }
+        System.out.print("Digite el codigo del libro a prestar: ");
+        bookCode = read.nextLine();
+        Book book = null;
+        for (Book b : books) {
+            if(b.getCode().equals(bookCode)){
+                book = b;
+                break;
+            }
+        }
+        if(book == null){
+            System.out.println("Libro no registrado");
+            return;
+        }
+        if(!book.isAvailable()){
+            System.out.println("El libro no se encuentra disponible");
+            return;
+        }
+        loans.add(new Loan(loanId, customer, book));
+        book.setAvailable(false);
+        System.out.println("Prestamo registrado correctamente");
     }
     
     public static void main(String[] args) {

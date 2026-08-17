@@ -14,12 +14,12 @@ public class Loan {
     public Loan() {
     }
 
-    public Loan(String loanId, Customer customer, Book book, String state) {
+    public Loan(String loanId, Customer customer, Book book) {
         this.loanId = loanId;
         this.customer = customer;
         this.book = book;
         this.date = LocalDate.now();
-        this.state = state;
+        this.state = "Activo";
     }
 
     public String getLoanId() {
