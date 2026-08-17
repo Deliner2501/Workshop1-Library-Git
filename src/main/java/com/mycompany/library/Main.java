@@ -191,6 +191,26 @@ public class Main {
         }
         System.out.println("Libro no registrado");
     }
+    
+    void deleteBook(){
+        if(books.isEmpty()){
+            System.out.println("No hay libros registrados");
+            return;
+        }
+        String code;
+        System.out.print("Digite el codigo del libro a eliminar: ");
+        code = read.nextLine();
+        
+        for (Book b : books) {
+            if(b.getCode().equals(code)){
+                books.remove(b);
+                System.out.println("Libro eliminado correctamente");
+                return;
+            }
+        }
+        System.out.println("Libro no registrado");
+    }
+    
     public static void main(String[] args) {
         
     }
