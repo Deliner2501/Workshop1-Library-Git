@@ -105,6 +105,21 @@ public class Main {
         System.out.println("Cliente no registrado");
     }
     
+    void createBook(){
+        String code, title, yearPublic, author;
+        boolean available;
+        System.out.print("Digite el codigo del libro: ");
+        code = read.nextLine();
+        System.out.print("Digite el titulo del libro: ");
+        title = read.nextLine();
+        System.out.print("Digite el anio de publicacion del libro: ");
+        yearPublic = read.nextLine();
+        System.out.print("Digite el autor del libro: ");
+        author = read.nextLine();
+        books.add(new Book(code, title, yearPublic, author, true));
+        System.out.println("Libro creado correctamente");
+    }
+    
     public static void main(String[] args) {
         
     }
