@@ -120,6 +120,28 @@ public class Main {
         System.out.println("Libro creado correctamente");
     }
     
+    void listBooks(){
+        if(books.isEmpty()){
+            System.out.println("No hay libros registrados");
+            return;
+        }
+        int counter = 1;
+        for (Book b : books) {
+            System.out.println("Libro #"+counter);
+            System.out.println("Codigo del libro: "+b.getCode());
+            System.out.println("Titulo del libro: "+b.getTitle());
+            System.out.println("Anio de publicacion del libro: "+b.getYearPublic());
+            System.out.println("Autor del libro: "+b.getAuthor());
+            if(b.isAvailable()){
+                System.out.println("Disponible: Si");
+            }else{
+                System.out.println("Disponible: No");
+            }
+            System.out.println(" ");
+            counter++;
+        }
+    }
+    
     public static void main(String[] args) {
         
     }
