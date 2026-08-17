@@ -261,6 +261,30 @@ public class Main {
         System.out.println("Prestamo registrado correctamente");
     }
     
+    void returnLoan(){
+        if(loans.isEmpty()){
+            System.out.println("No hay ningun prestamo registrado");
+            return;
+        }
+        String loanId;
+        System.out.print("Digite el id del prestamo a devolver: ");
+        loanId = read.nextLine();
+        for (Loan l : loans) {
+            if(l.getLoanId().equals(loanId)){
+                if(l.getState().equals("Activo")){
+                    l.getBook().setAvailable(true);
+                    l.setState("Devuelto");
+                    System.out.println("Prestamo devuelto correctamente");
+                    return;
+                }else{
+                    System.out.println("El prestamo ya ha sido devuelto");
+                    return;
+                }
+            }
+        }
+        System.out.println("Prestamo no registrado");
+    }
+    
     public static void main(String[] args) {
         
     }
