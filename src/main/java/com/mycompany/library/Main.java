@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Main {
     static ArrayList<Customer> customers = new ArrayList<>();
-    Scanner read = new Scanner(System.in);
+    static Scanner read = new Scanner(System.in);
     
     void createCustomer(){
         String id, name, phone, email;
@@ -79,6 +79,25 @@ public class Main {
                 System.out.print("Digite el nuevo email del cliente: ");
                 c.setEmail(read.nextLine());
                 System.out.println("Cliente actualizado correctamente");
+                return;
+            }
+        }
+        System.out.println("Cliente no registrado");
+    }
+    
+    void deleteCustomer(){
+        if(customers.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return;
+        }
+        String id;
+        System.out.print("Digite el id del cliente a eliminar: ");
+        id = read.nextLine();
+        
+        for (Customer c : customers) {
+            if(c.getId().equals(id)){
+                customers.remove(c);
+                System.out.println("Cliente eliminado correctamente");
                 return;
             }
         }
